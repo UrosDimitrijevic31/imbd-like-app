@@ -1,32 +1,67 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <b-container fluid id="app">
+    <b-row align-h="around" class="nav" align-v="center">
+      <b-col xl="4" class="left-section">
+        <div class="nav-logo">
+          <b-img :src="require('./assets/logo-dummy.png')" fluid-grow alt="logo-dummy"></b-img>
+        </div>
+      </b-col>
+      <b-col xl="4" class="right-section">
+       <b-link href="/">Home</b-link>
+       <b-link href="/about">Favorites</b-link>
+      </b-col>
+    </b-row>
+    <router-view></router-view>
+    <b-row class="footer">
+      <b-col>&copy; copyriright</b-col>
+    </b-row>
+  </b-container>
 </template>
 
-<style>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Popins, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background-color: #00BFFF;
 }
 
-#nav {
-  padding: 30px;
+.nav {
+  height: 60px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+/* //ToDo fix this  */
+.nav-logo {
+  height: 80%;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.nav img {
+  width: 100%;
+  height: 100%;
 }
+
+a {
+  text-decoration: none !important;
+  color: white !important;
+  margin: 15px;
+  font-size: 1.5em;
+  padding-bottom: 4px;
+}
+
+a:hover {
+  border-bottom: 1.7px solid rgba(255, 255, 255, 0.7);
+}
+.left-section div {
+  width: 20%;
+  height: 30px;
+  background-color: white;
+}
+
+.right-section {
+  text-align: right;
+}
+
+
+
 </style>
