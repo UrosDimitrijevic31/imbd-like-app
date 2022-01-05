@@ -13,7 +13,9 @@
     </b-row>
     <router-view></router-view>
     <b-row class="footer">
-      <b-col>&copy; copyriright</b-col>
+      <b-col style="text-align: center;">
+        &copy; copyright
+      </b-col>
     </b-row>
   </b-container>
 </template>
