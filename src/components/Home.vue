@@ -54,8 +54,8 @@
 
             <b-col xl="3" lg="3" class="m-3">
               <b-card
-                  title="Anabel"
-                  img-src="https://picsum.photos/600/300/?image=25"
+                  :title="this.moviesData.Title"
+                  :img-src="this.moviesData.Poster"
                   img-alt="Image"
                   img-top
                   tag="article"
@@ -63,7 +63,42 @@
                   class="mb-2 text-center"
                 >
                   <b-card-text>
-                    2021 - Horror
+                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
+                  </b-card-text>
+
+                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
+                </b-card>
+              </b-col>
+              <b-col xl="3" lg="3" class="m-3">
+              <b-card
+                  :title="this.moviesData.Title"
+                  :img-src="this.moviesData.Poster"
+                  img-alt="Image"
+                  img-top
+                  tag="article"
+                  style="max-width: 20rem;"
+                  class="mb-2 text-center"
+                >
+                  <b-card-text>
+                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
+                  </b-card-text>
+
+                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
+                </b-card>
+              </b-col>
+              
+              <b-col xl="3" lg="3" class="m-3">
+              <b-card
+                  :title="this.moviesData.Title"
+                  :img-src="this.moviesData.Poster"
+                  img-alt="Image"
+                  img-top
+                  tag="article"
+                  style="max-width: 20rem;"
+                  class="mb-2 text-center"
+                >
+                  <b-card-text>
+                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
                   </b-card-text>
 
                   <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
@@ -72,8 +107,8 @@
 
               <b-col xl="3" lg="3" class="m-3">
               <b-card
-                  title="Anabel"
-                  img-src="https://picsum.photos/600/300/?image=25"
+                  :title="this.moviesData.Title"
+                  :img-src="this.moviesData.Poster"
                   img-alt="Image"
                   img-top
                   tag="article"
@@ -81,7 +116,7 @@
                   class="mb-2 text-center"
                 >
                   <b-card-text>
-                    2021 - Horror
+                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
                   </b-card-text>
 
                   <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
@@ -90,8 +125,8 @@
 
               <b-col xl="3" lg="3" class="m-3">
               <b-card
-                  title="Anabel"
-                  img-src="https://picsum.photos/600/300/?image=25"
+                  :title="this.moviesData.Title"
+                  :img-src="this.moviesData.Poster"
                   img-alt="Image"
                   img-top
                   tag="article"
@@ -99,7 +134,7 @@
                   class="mb-2 text-center"
                 >
                   <b-card-text>
-                    2021 - Horror
+                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
                   </b-card-text>
 
                   <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
@@ -108,8 +143,8 @@
 
               <b-col xl="3" lg="3" class="m-3">
               <b-card
-                  title="Anabel"
-                  img-src="https://picsum.photos/600/300/?image=25"
+                  :title="this.moviesData.Title"
+                  :img-src="this.moviesData.Poster"
                   img-alt="Image"
                   img-top
                   tag="article"
@@ -117,7 +152,7 @@
                   class="mb-2 text-center"
                 >
                   <b-card-text>
-                    2021 - Horror
+                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
                   </b-card-text>
 
                   <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
@@ -126,8 +161,8 @@
 
               <b-col xl="3" lg="3" class="m-3">
               <b-card
-                  title="Anabel"
-                  img-src="https://picsum.photos/600/300/?image=25"
+                  :title="this.moviesData.Title"
+                  :img-src="this.moviesData.Poster"
                   img-alt="Image"
                   img-top
                   tag="article"
@@ -135,30 +170,14 @@
                   class="mb-2 text-center"
                 >
                   <b-card-text>
-                    2021 - Horror
+                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
                   </b-card-text>
 
                   <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
                 </b-card>
               </b-col>
 
-              <b-col xl="3" lg="3" class="m-3">
-              <b-card
-                  title="Anabel"
-                  img-src="https://picsum.photos/600/300/?image=25"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2 text-center"
-                >
-                  <b-card-text>
-                    2021 - Horror
-                  </b-card-text>
-
-                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-                </b-card>
-              </b-col>
+            
 
               
               
@@ -170,6 +189,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Home',
   props: {
@@ -178,11 +199,62 @@ export default {
   data() {
     return{
       form: {
-          name: '',
-          year: '',
-          type: ''
-        },
+        name: '',
+        year: '',
+        type: ''
+      },
+      moviesData: [],
+      url: 'http://www.omdbapi.com/?i=tt3896198&apikey=de1c8e08',
+      key: 'de1c8e08'
     }
+  },
+  methods: {
+    fetchMovieData() {
+      axios.get(`${this.url}`).
+        then(res => {
+          console.log(res.data.Title);
+          this.moviesData = res.data;
+          console.log(this.moviesData);
+        }).catch(err => {
+          console.log(err);
+        })
+    },
+    fetchData() {
+      const options = {
+        method: 'GET',
+        url: 'https://imdb8.p.rapidapi.com/title/get-videos',
+        params: {tconst: 'tt0944947', limit: '25', region: 'US'},
+        headers: {
+          'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+          'x-rapidapi-key': '0e990046f5msh1251e856b51c5aep1bc421jsn62bc60e4ec41'
+        }
+      };
+
+      axios.request(options).then(response => {
+        console.log(response);
+        
+      }).catch(error => {
+        console.error(error);
+      });
+    },
+    onSubmit() {
+      
+    },
+    onReset(event) {
+        event.preventDefault()
+        // Reset our form values
+        this.form.name = ''
+        this.form.year = ''
+        this.form.type = ''
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+      }
+  },
+  created() {
+    this.fetchMovieData()
   }
 }
 </script>

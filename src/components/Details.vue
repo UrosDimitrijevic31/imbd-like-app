@@ -113,10 +113,10 @@ export default {
       }
   },
   methods: {
-    setRating: (rating) => {
+    setRating(rating) {
       this.rating= rating;
     },
-    setRatingSingle: (rating) => {
+    setRatingSingle(rating) {
       this.singleRating = rating;
     }
   }
