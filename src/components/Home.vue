@@ -52,10 +52,11 @@
           </b-row>
           <b-row align-h="center">
 
-            <b-col xl="3" lg="3" class="m-3">
+            <b-col xl="3" lg="3" class="m-3"  v-for="movie in moviesData"  :key="movie.id" >
               <b-card
-                  :title="this.moviesData.Title"
-                  :img-src="this.moviesData.Poster"
+                  @click="openMovie(movie)" 
+                  :title="movie.Title"
+                  :img-src="movie.Poster"
                   img-alt="Image"
                   img-top
                   tag="article"
@@ -63,124 +64,12 @@
                   class="mb-2 text-center"
                 >
                   <b-card-text>
-                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
+                   {{`${movie.Year} - ${movie.Genre}`}}
                   </b-card-text>
 
                   <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
                 </b-card>
-              </b-col>
-              <b-col xl="3" lg="3" class="m-3">
-              <b-card
-                  :title="this.moviesData.Title"
-                  :img-src="this.moviesData.Poster"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2 text-center"
-                >
-                  <b-card-text>
-                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
-                  </b-card-text>
-
-                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-                </b-card>
-              </b-col>
-              
-              <b-col xl="3" lg="3" class="m-3">
-              <b-card
-                  :title="this.moviesData.Title"
-                  :img-src="this.moviesData.Poster"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2 text-center"
-                >
-                  <b-card-text>
-                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
-                  </b-card-text>
-
-                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-                </b-card>
-              </b-col>
-
-              <b-col xl="3" lg="3" class="m-3">
-              <b-card
-                  :title="this.moviesData.Title"
-                  :img-src="this.moviesData.Poster"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2 text-center"
-                >
-                  <b-card-text>
-                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
-                  </b-card-text>
-
-                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-                </b-card>
-              </b-col>
-
-              <b-col xl="3" lg="3" class="m-3">
-              <b-card
-                  :title="this.moviesData.Title"
-                  :img-src="this.moviesData.Poster"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2 text-center"
-                >
-                  <b-card-text>
-                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
-                  </b-card-text>
-
-                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-                </b-card>
-              </b-col>
-
-              <b-col xl="3" lg="3" class="m-3">
-              <b-card
-                  :title="this.moviesData.Title"
-                  :img-src="this.moviesData.Poster"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2 text-center"
-                >
-                  <b-card-text>
-                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
-                  </b-card-text>
-
-                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-                </b-card>
-              </b-col>
-
-              <b-col xl="3" lg="3" class="m-3">
-              <b-card
-                  :title="this.moviesData.Title"
-                  :img-src="this.moviesData.Poster"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2 text-center"
-                >
-                  <b-card-text>
-                   {{`${this.moviesData.Year} - ${this.moviesData.Genre}`}}
-                  </b-card-text>
-
-                  <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
-                </b-card>
-              </b-col>
-
-            
-
-              
-              
+              </b-col>        
           </b-row>
         </b-container>
       </b-col>
@@ -204,7 +93,7 @@ export default {
         type: ''
       },
       moviesData: [],
-      url: 'http://www.omdbapi.com/?i=tt3896198&apikey=de1c8e08',
+      url: 'https://www.omdbapi.com/?s=Game%20of%20Thrones&Season=1&Episode=1&apikey=de1c8e08',
       key: 'de1c8e08'
     }
   },
@@ -213,7 +102,7 @@ export default {
       axios.get(`${this.url}`).
         then(res => {
           console.log(res.data.Title);
-          this.moviesData = res.data;
+          this.moviesData = res.data.Search;
           console.log(this.moviesData);
         }).catch(err => {
           console.log(err);
